@@ -1,15 +1,5 @@
----
-title: "titre"
-author: "auteur"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
-output:
-  pdf_document:
-    latex_engine: pdflatex
-fontsize: 14pt
-documentclass: report
----
- 
-\includegraphics[width=6cm]{./img/Logo.png}
+
+<img src="./img/Logo.png"  width=50% height=50%>
 
 
 # Regular Expressions
