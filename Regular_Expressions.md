@@ -1,5 +1,5 @@
-
-![DIT Logo](./img/Logo.png =100x20)
+<img src="./img/Logo.png" width="200">
+![DIT Logo](./img/Logo.png)
 
 
 # Regular Expressions
