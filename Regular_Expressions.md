@@ -1,3 +1,7 @@
+
+![DIT Logo](./img/Logo.png)
+
+
 # Regular Expressions
 
 Thanks for visiting [The Markdown Guide](https://www.markdownguide.org)!
