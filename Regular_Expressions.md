@@ -1,5 +1,5 @@
 
-<img src="./img/Logo.png"  width=100% height=200>
+<img src="./img/Logo.png"  width=100% height=500>
 
 
 # Regular Expressions
