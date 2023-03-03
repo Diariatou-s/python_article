@@ -7,12 +7,23 @@
 
 ## Introduction
 
-Being in the data exploitation industry, data cleaning is one of the biggest parts of the job. However it's not always an easy task to do, especially in cases where user input is expected. This one can put everything he wants which can impact the quality of our model and our algorithm. Regular expressions are there to help alleviate this concern and save considerable time for the developer in terms of data validation and data cleaning.
-Regular expressions are a powerful way to find and isolate expressions from a string, basically manipulating text in python. It is a mini programming language, highly specialized, embedded inside python and made available through the >re module.
+Being in the data exploitation industry, data cleaning is one of the biggest parts of the job. However it's not always an easy task to do, especially in cases where user input is expected. This one can put everything he wants which can impact the quality of our model and our algorithm. Regular expressions are there to help alleviate this concern and save considerable time for the developer in terms of data validation and data cleaning as well as preventing injection attacks.
 
-## Basic Syntax
+Regular expressions (called REs, or regexes, or regex patterns) are a powerful way to find and isolate expressions from a string, basically text manipulation in python. It is a mini programming language, highly specialized, embedded inside python.
 
-These are the elements outlined in John Gruber’s original design document. All Markdown applications support these elements.
+Regular expression patterns are compiled into a series of bytecodes which are then executed by a matching engine written in C.
+
+Regular expressions can be quite powerful, but the syntax can be cryptic, and there are many advanced features that take time and practice to master. But, **don't worry!**, we will cover everything you will need to know in that article.
+
+So let's begin!
+
+## Importation of the module
+
+Python has an easy to use module for regex named `re`. To import that module, nothing easier, just type:
+
+> import re
+
+We call the functions of that module by typing `re.name_of_the_function`.
 
 ### Heading
 
