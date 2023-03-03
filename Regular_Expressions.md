@@ -8,7 +8,7 @@
 ## Introduction
 
 Being in the data exploitation industry, data cleaning is one of the biggest parts of the job. However it's not always an easy task to do, especially in cases where user input is expected. This one can put everything he wants which can impact the quality of our model and our algorithm. Regular expressions are there to help alleviate this concern and save considerable time for the developer in terms of data validation and data cleaning.
-Regular expressions are a powerful way to find and isolate expressions from a string, basically manipulating text in python. It is a mini programming language, highly specialized, embedded inside python and made available through the >re module
+Regular expressions are a powerful way to find and isolate expressions from a string, basically manipulating text in python. It is a mini programming language, highly specialized, embedded inside python and made available through the >re module.
 
 ## Basic Syntax
 
