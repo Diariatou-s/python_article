@@ -4,9 +4,11 @@
 
 # Regular Expressions
 
-Thanks for visiting [The Markdown Guide](https://www.markdownguide.org)!
 
-This Markdown cheat sheet provides a quick overview of all the Markdown syntax elements. It can’t cover every edge case, so if you need more information about any of these elements, refer to the reference guides for [basic syntax](https://www.markdownguide.org/basic-syntax) and [extended syntax](https://www.markdownguide.org/extended-syntax).
+## Introduction
+
+Being in the data exploitation industry, data cleaning is one of the biggest parts of the job. However it's not always an easy task to do, especially in cases where user input is expected. This one can put everything he wants which can impact the quality of our model and our algorithm. Regular expressions are there to help alleviate this concern and save considerable time for the developer in terms of data validation and data cleaning.
+Regular expressions are a powerful way to find and isolate expressions from a string, basically manipulating text in python. It is a mini programming language, highly specialized, embedded inside python and made available through the >re module
 
 ## Basic Syntax
 
