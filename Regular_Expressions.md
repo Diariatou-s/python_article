@@ -207,6 +207,34 @@ Flags are inline option we use to specifiy interpretation of the pattern and the
 | `s` | Single-line mode |
 | `x` | Ignore white space |
 
+#### Control Characters
+
+Control characters are special characters used to represent characters not distinguishable in ASCII like the tabulation, the backspace, the new line, etc.
+
+| Syntax | Description | Unicode |
+| ----------- | ----------- |
+| `\t` | Horizontal tab | \u0009 |
+| `\v` | Vertical tab | \u000B |
+| `\b` | Backspace | \u0008 |
+| `\e` | Escape | \u001B |
+| `\r` | Carriage return | \u000D |
+| `\f` | Form feed | \u000C |
+| `\n` | New line | \u000A |
+| `\a` | Bell (alarm) | \u0007 |
+
+#### Character Classes
+
+Some special charcters of the regex language can specify a set of value in order to simplify our pattern or facilitate understanding
+
+| Use | To match character |
+| ----------- | ----------- |
+| `\w` | Word character. [0-9_a-zA-Z] and Unicode word characters |
+| `\W` | Non-word character |
+| `\d` | Decimal digit and Unicode digits |
+| `\D` | Not a decimal digit |
+| `\s` | White-space character [ \t\n\r\f\v] and Unicode spaces |
+| `\S` | Non-white-space char |
+
 # H1
 ## H2
 ### H3
