@@ -25,16 +25,33 @@ We call the method of that module by typing `re.name_of_the_method`.
 ### Python Regex Features
 
 As introduced, Regex are used mostly for searching a match of a specific pattern on a string.
-To perform that, there are several methods available via the `re` module which performances and behaviours can differ.
-Fist of all , let's look at the `match` method, which is the most common one.
-If we want to find a match of "pain" in the string "Je mange du pain" for example, we can do:
+To perform that, there are several methods available via the `re` module which performances and behaviours and utilities can differ.
 
-> re.match(r"Je", "Je mange du pain")
+***Good to know**: It is better to use raw strings to write RE patterns by adding a `r` in the beginning of the string like this: `r"This is a string"`*
 
-*Note that the `match` method finds the first match at the start of the text. So, running the same code trying to match "mange" for example will not work.*
 
-When it finds the match at the beginning of the text, it will return something like this `<re.Match object; span=(0, 2), match='Je'>` of type `re.match`.
+### Find first match
 
+Fist of all , let's look at the `match` method, which is the most basic one.
+If we want to find a match of "John" in the string "John is eating bread" for example, we can do:
+
+> re.match(r"John", "John is eating bread")
+
+*Note that the `match` method finds the first match at the start of the text. So, running the same code trying to match "bread" for example will not work.*
+
+When it finds the match at the beginning of the text, it will return something like this `<re.Match object; span=(0, 2), match='Je'>` of type `re.match`, otherwise it will return `None`.
+
+If you want to find a match anywhere in the string, we have to use the `search` method, like following:
+
+```
+> re.search(r"is", "John is eating bread")
+<re.Match object; span=(5, 7), match='is'>
+```
+
+### Find All Matches
+
+The most used methods for pattern searching in a string have to be the ones that allow us to find *all* of the occurences of that specific pattern in the string.
+We have the `findall` method which finds all the matches in a single call
 
 # H1
 ## H2
