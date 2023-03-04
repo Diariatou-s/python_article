@@ -1,7 +1,6 @@
 
 ![Logo](./img/Logo.png)
 
-
 # Regular Expressions
 
 ---
