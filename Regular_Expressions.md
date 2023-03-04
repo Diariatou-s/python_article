@@ -96,10 +96,13 @@ The `split()` method allows use to split the text or the string by the provided 
 ['John', ' Sara', ' Mary', ' Abel', ' Thomas']
 ```
 
-
-Now that we know the most common and useful methods of the `re` module, we can attach the Python Regex Languages in order for us to write more specific and complex patterns for a better use of those methods.
+Now that we know the most common and useful methods of the `re` module, we can deep dive into the Python Regex Languages in order for us to write more specific and complex patterns for a better use of those methods.
 
 ## Python Regex Language
+
+Learning regular expressions involves getting familiar with the rules of the regular expression language, which are not that much but combined can be a powerful tool for text manipulation.
+
+
 
 # H1
 ## H2
