@@ -117,7 +117,7 @@ Take a look at the following table which summarizes the metacharacters used in R
 | `|` | Either or |
 | `()` | Capture and group |
 
-Use case 1:
+**Use case 1:**
 
 ```
 # Matches only if the first letter of the text is T or B
@@ -125,13 +125,47 @@ pattern = "^[T|B]"
 text1 = "This a good day!"
 test2 = "Yesterday was Tuesday"
 
-# Prints 'match!' it finds a T in the begenning of the string
 if re.findall(pattern, text1): print(match) else print("no match!")
 > match!
 
-# Prints 'no match!' the T or B of the string is not in beginning of it
 if re.findall(pattern, text2): print(match) else print("no match!")
 > no match!
+```
+
+**Use case 2**
+
+```
+# Matches only if the first letter of the text is T or B and ends with the letter y
+pattern = "^[T|B]y$"
+text1 = "This a good day!"
+test2 = "Yesterday was Tuesday"
+
+if re.findall(pattern, text1): print(match) else print("no match!")
+> no match!
+
+if re.findall(pattern, text2): print(match) else print("no match!")
+> no match!
+
+# Prints 'no match!' for both because none of them starts with T or B AND ends with y
+```
+
+**Use case 3**
+
+```
+# Matches only if the first letter of the text is H and is present one or more times, is followed by whatever characters except for the new line, the letter l exactly two times, the letter o and then the ! optionally
+pattern = "^H+.l{2}o!*"
+text1 = "Hello"
+text2 = "HHelo!"
+text3 = "Hallo"
+
+if re.findall(pattern, text1): print(match) else print("no match!")
+> match!
+
+if re.findall(pattern, text2): print(match) else print("no match!")
+> no match!
+
+if re.findall(pattern, text3): print(match) else print("no match!")
+> match!
 ```
 
 # H1
