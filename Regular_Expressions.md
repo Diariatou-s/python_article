@@ -51,7 +51,13 @@ If you want to find a match anywhere in the string, we have to use the `search` 
 ### Find All Matches
 
 The most used methods for pattern searching in a string have to be the ones that allow us to find *all* of the occurences of that specific pattern in the string.
-We have the `findall` method which finds all the matches in a single call
+We have the `findall` method which finds all the matches wrapped in a list in a single call, otherwise, it will return an empty list:
+
+> re.findall(r"s", "This is a string")
+
+*Note that the findall method returns only after scanning the entire text. So if you have a large text as input, findall may take a long time and block you code.*
+
+That leads us to the second method which is the `finditer`. The way finditer works is that it'll return the first match and it will wait until you ask it to find the next match. So you have full control over when to start. This method returns an iterator [^1] and we use a loop to iterated through the matches and for each match, the interator returns a match object.
 
 # H1
 ## H2
