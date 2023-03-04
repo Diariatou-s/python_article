@@ -190,7 +190,7 @@ To match a single character, we can write it as is or we can add specific checks
 pattern = "[A-Z][^re].*[0-9]$"
 text = "On my diet, today is the day 5"
 
-print(match) if re.findall(pattern, text) else print("no match!")
+print("match") if re.findall(pattern, text) else print("no match!")
 > match!
 ```
 
@@ -206,6 +206,7 @@ Flags are inline option we use to specifiy interpretation of the pattern and the
 | `u` | Unicode dependent |
 | `s` | Single-line mode |
 | `x` | Ignore white space |
+
 
 #### Control Characters
 
@@ -234,6 +235,46 @@ Some special charcters of the regex language can specify a set of value in order
 | `\D` | Not a decimal digit |
 | `\s` | White-space character [ \t\n\r\f\v] and Unicode spaces |
 | `\S` | Non-white-space char |
+
+#### Groups
+
+As introduced above, the group can have many uses such as defining matching patterns into groups and naming those group for a simpler access and manipulation.
+
+| Use | To define |
+| ----------- | ----------- |
+| `(exp)` | Indexed group |
+| `(?P<name>exp)` | Named group |
+| `(?:exp)` | Noncapturing group |
+| `(?=exp)` | Zero-width positive lookahead |
+| `(?!exp)` | Zero-width negative lookahead |
+| `(?<=exp)` | Zero-width positive lookbehind. exp is fixed width |
+| `(?<!exp)` | Zero-width negative lookbehind. exp is fixed width |
+
+```
+pattern = r"(\d{4})(\d{2})(\d{2})"
+text = "Start Date: 20200920"
+match = re.search(pattern, text)
+
+if match:
+    print('Found a match', match.group(0), 'at index:', match.start())
+    
+    print('Groups', match.groups())
+        
+    for idx, value in enumerate(match.groups()):
+        print ('\tGroup', idx+1, value, '\tat index', match.start(idx+1))
+        
+else:
+    print("No Match!")
+
+# Output
+
+Found a match 20200920 at index: 12
+Groups ('2020', '09', '20')
+	Group 1 2020 	at index 12
+	Group 2 09 	at index 16
+	Group 3 20 	at index 18
+  
+```
 
 # H1
 ## H2
