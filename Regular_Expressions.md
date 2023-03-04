@@ -96,6 +96,11 @@ The `split()` method allows use to split the text or the string by the provided 
 ['John', ' Sara', ' Mary', ' Abel', ' Thomas']
 ```
 
+
+Now that we know the most common and useful methods of the `re` module, we can attach the Python Regex Languages in order for us to write more specific and complex patterns for a better use of those methods.
+
+## Python Regex Language
+
 # H1
 ## H2
 ### H3
