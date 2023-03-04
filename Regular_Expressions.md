@@ -1,9 +1,10 @@
 
-<img src="./img/Logo.png"  width=100% height=500>
+![Logo](./img/Logo.png)
 
 
 # Regular Expressions
 
+---
 
 ## Introduction
 
@@ -13,6 +14,8 @@ Those patterns are compiled into a series of bytecodes which are then executed b
 Regular expressions can be quite powerful, but the syntax can be cryptic, and there are many advanced features that take time and practice to master. But, **don't worry!**, we will cover everything you will need to know in that article.
 
 So let's begin!
+
+---
 
 ## Importation of the module
 
@@ -283,6 +286,8 @@ Found a match 20200920 at index: 12
 
 ###### Substitution
 
+Replacement pattern can use groups captured in find pattern.
+
 | Use | To define |
 | ----------- | ----------- |
 | `\g<n>` | Substring matched by group number n |
@@ -294,6 +299,8 @@ Found a match 20200920 at index: 12
 | ----------- | ----------- |
 | `(?# comment)` | Add inline comment |
 | `#` | Add x-mode comment to end |
+
+---
 
 ## Python Regex Engine - Behind the scenes
 
@@ -309,7 +316,7 @@ Pattern and Text are evaluated one character at a time. Path taken depends on re
 
 Pattern and text are evaluated left to right. Left most pattern is attempted first and gradually moves right to attempt other patterns. When left most pattern is not viable, other patterns are evaluated. Regex engine uses backtracking to evaluate other paths. The efficient way to do it is to write mor eprecise patterns first then followed by more generic ones.
 
-### Greedy or Lazy behaviour
+### Greedy and Lazy
 
 ###### Greedy
 
@@ -319,110 +326,70 @@ Quantifiers such as `*`, `+` are greedy. They will try to match as much of the i
 
 Quantifiers can be turned to Lazy by adding a `?` after the quantifier. When there is no match for a pattern, lazy mode backtracks on the pattern and expands to match more characters in input. Lazy matches as few times as possible and attempts to match rest of the pattern.
 
-# H1
-## H2
-### H3
+### Look ahead and Look behing
 
-### Bold
+Look ahead peeks at what is coming up next without consuming the characters while Look behind looks at what came before current character. They allows us to implement more complex conditional logic.
+Both are called zero width assertions; they do not consume any characters and return either `True` or `False`. 
 
-**bold text**
+###### Positive Look ahead
 
-### Italic
+`IF (pre-condition) THEN (expression)`
 
-*italicized text*
+With the positive Look-ahead, pre-condition looks at the characters coming up next (without consuming them) and the expression is evaluated only when the pre-condition is met.
 
-### Blockquote
+###### Negative Look-ahead
 
-> blockquote
+`IF NOT (pre-condition) THEN (expression)`
 
-### Ordered List
+With negative Look ahead, pre-condition looks at the characters coming up next (without consuming them) and the expression is evaluated only when the pre-condition is NOT met.
 
-1. First item
-2. Second item
-3. Third item
+###### Positive Look-behind
 
-### Unordered List
+`IF (pre-condition) THEN (expression)`
 
-- First item
-- Second item
-- Third item
+With the positive Look-ahead, pre-condition condition goes back and checks characters before the current one (without consuming them) and the expression is evaluated only when the pre-condition is met.
 
-### Code
+###### Negative Look-behind
 
-`code`
+`IF NOT (pre-condition) THEN (expression)`
 
-### Horizontal Rule
+With negative Look ahead, pre-condition goes back and checks characters before the current one (without consuming them) and the expression is evaluated only when the pre-condition is NOT met.
 
 ---
 
-### Link
+## Regular Expressions Applications in Data Science
 
-[Markdown Guide](https://www.markdownguide.org)
+After looking at the detailed structure of REs, let's now explore some insductrial applications of regex by applying it to some standard applications in data science.
 
-### Image
+### Web-Scraping and Data Collection
 
-![alt text](https://www.markdownguide.org/assets/images/tux.png)
-
-## Extended Syntax
-
-These elements extend the basic syntax by adding additional features. Not all Markdown applications support these elements.
-
-### Table
-
-| Syntax | Description |
-| ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
-
-### Fenced Code Block
+Data Collection is a significant part of any project since it consumes a lot of time and effort. Nevertheless, collecting textual data over the web is far more accessible thanks to libraries like beautiful soup, Scrapy, and Selenium. The collected data often requires cleaning, and cleaning tasks are tedious. With the help of regular expressions, we can clean web data efficiently and promptly.
+The real-world unstructured data can be hard to read and analyse. Our job is to extract the data carefully without losing any crucial information. Tackling this task manually might not seem challenging since there are only a few lines but imagine if we have millions of rows with the same kind of complex text. Thanks to regex, we can extract the desired links with a few lines of code even if we have millions of rows present in the data. Let’s see how we can extract links abtained after a web scraping extraction. 
 
 ```
-{
-  "firstName": "John",
-  "lastName": "Smith",
-  "age": 25
-}
+import re
+clean_urls = re.findll(r'href=[\'"]?([^\'" >]+)', raw_url_data)
 ```
 
-### Footnote
+### Text Preprocessing
 
-Here's a sentence with a footnote. [^1]
+Text data is collected from a variety of sources, namely the feedback forms, web-scrapped text, text extracted from images using OCRs, etc. Such diverse data comes with high inconsistencies that should be removed before diving into any language modeling task. Language modeling tasks include sentiment analysis, language translation, text generation, name entity recognition, etc. Each of the mentioned tasks requires clean text data for modeling. 
+We can create a pipeline of regex patterns for the data to go through and perform the preprocessing in no time.
 
-[^1]: This is the footnote.
+---
 
-### Heading ID
+# Conclusion
 
-### My Great Heading {#custom-id}
+The difficulty of using REs can vary depending on the complexity of the expressions you need to create and your familiarity with the syntax. At its simplest level, regex can be easy to understand and use for basic pattern matching tasks, such as finding all occurrences of a particular string or character in a text file. They indeed have minimized the data cleansing efforts by a far portion.
+Regular expressions have been extended to human-computer interactions, and we might see some more significant applications in the near future like we presented above some excellent applications of regular expressions in the data science domain.
+In summary, while regular expressions can be challenging to master, they are a powerful tool for pattern matching and text manipulation tasks. With practice and patience, you can learn to use regex effectively.
 
-### Definition List
+---
 
-term
-: definition
+### Resources
 
-### Strikethrough
+[Regular Expression HOWTO](https://docs.python.org/3/howto/regex.html)
+[Python RegEx](https://www.w3schools.com/python/python_regex.asp)
+[Applications of Regex in Data Science](https://www.enjoyalgorithms.com/blog/regex-applications-in-data-science)
+[Regular Expressions (Regex) with Python - Easy and Fast!](https://www.udemy.com/course/python-regular-expressions/)
 
-~~The world is flat.~~
-
-### Task List
-
-- [x] Write the press release
-- [ ] Update the website
-- [ ] Contact the media
-
-### Emoji
-
-That is so funny! :joy:
-
-(See also [Copying and Pasting Emoji](https://www.markdownguide.org/extended-syntax/#copying-and-pasting-emoji))
-
-### Highlight
-
-I need to highlight these ==very important words==.
-
-### Subscript
-
-H~2~O
-
-### Superscript
-
-X^2^
