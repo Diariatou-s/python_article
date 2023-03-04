@@ -101,8 +101,38 @@ Now that we know the most common and useful methods of the `re` module, we can d
 ## Python Regex Language
 
 Learning regular expressions involves getting familiar with the rules of the regular expression language, which are not that much but combined can be a powerful tool for text manipulation.
+Take a look at the following table which summarizes the metacharacters used in RE patterns
 
+| Syntax | Description |
+| ----------- | ----------- |
+| `[]` | A set of characters |
+| `\` | Signals a special sequence (can also be used to escape special characters) |
+| `.` | Any character (except newline character) |
+| `^` | 	Starts with |
+| `$` | Ends with |
+| `*` | Zero or more occurrences |
+| `+` | One or more occurrences |
+| `?` | Zero or one occurrences |
+| `{}` | Exactly the specified number of occurrences |
+| `|` | Either or |
+| `()` | Capture and group |
 
+Use case 1:
+
+```
+# Matches only if the first letter of the text is T or B
+pattern = "^[T|B]"
+text1 = "This a good day!"
+test2 = "Yesterday was Tuesday"
+
+# Prints 'match!' it finds a T in the begenning of the string
+if re.findall(pattern, text1): print(match) else print("no match!")
+> match!
+
+# Prints 'no match!' the T or B of the string is not in beginning of it
+if re.findall(pattern, text2): print(match) else print("no match!")
+> no match!
+```
 
 # H1
 ## H2
