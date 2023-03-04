@@ -18,11 +18,11 @@ So let's begin!
 
 Python has an easy to use module for regex named `re`, which allowing you to compile REs into objects and then perform matches with them. To import that module, nothing easier, just type:
 
-> import re
+`import re`
 
 We call the method of that module by typing `re.name_of_the_method`.
 
-### Python Regex Features
+## Python Regex Features
 
 As introduced, Regex are used mostly for searching a match of a specific pattern on a string.
 To perform that, there are several methods available via the `re` module which performances and behaviours and utilities can differ.
@@ -35,7 +35,7 @@ To perform that, there are several methods available via the `re` module which p
 Fist of all , let's look at the `match` method, which is the most basic one.
 If we want to find a match of "John" in the string "John is eating bread" for example, we can do:
 
-> re.match(r"John", "John is eating bread")
+`re.match(r"John", "John is eating bread")`
 
 *Note that the `match` method finds the first match at the start of the text. So, running the same code trying to match "bread" for example will not work.*
 
@@ -53,11 +53,48 @@ If you want to find a match anywhere in the string, we have to use the `search` 
 The most used methods for pattern searching in a string have to be the ones that allow us to find *all* of the occurences of that specific pattern in the string.
 We have the `findall` method which finds all the matches wrapped in a list in a single call, otherwise, it will return an empty list:
 
-> re.findall(r"s", "This is a string")
+`re.findall(r"s", "This is a string")`
 
 *Note that the findall method returns only after scanning the entire text. So if you have a large text as input, findall may take a long time and block you code.*
 
-That leads us to the second method which is the `finditer`. The way finditer works is that it'll return the first match and it will wait until you ask it to find the next match. So you have full control over when to start. This method returns an iterator [^1] and we use a loop to iterated through the matches and for each match, the interator returns a match object.
+That leads us to the second method which is the `finditer`. The way finditer works is that it'll return the first match and it will wait until you ask it to find the next match. So you have full control over when to start. This method returns an [iterator](https://docs.python.org/3/c-api/iterator.html) and we use a loop to iterated through the matches and for each match, the interator returns a match object.
+
+```
+match_iter = re.finditer(r"s", "This is a string")
+
+for match in match_iter:
+    print(match_iter.group())
+```
+`match_iter` is of type `callable_iterator`.
+
+##### Match instances methods and attributes 
+
+The object returned after a match by the RE methods is a match instance that have is own methods that we can call to have more informations about the match. The most important ones are:
+
+- `group()` that returns the substring that was matched by the regex pattern
+- `start()` that returns the starting index of the match
+- `end()` that returns the ending index of the match
+- `span()` that returns both start and end indexes in a single tuple
+
+> The group() method can be very useful, which we will see later on
+
+### Find and Replace
+
+if we want not only to find a match but also to replace it we use the `sub` method. The parameters we have to provide are the RE pattern, the replacement pattern and the concerned text.
+
+```
+> re.sub(r"s", ",", "This is a string")
+'Thi, i, a ,tring'
+```
+
+### Split
+
+The `split()` method allows use to split the text or the string by the provided pattern. The return is a list of the elements.
+
+```
+> re.split(r",", "John, Sara, Mary, Abel, Thomas")
+['John', ' Sara', ' Mary', ' Abel', ' Thomas']
+```
 
 # H1
 ## H2
