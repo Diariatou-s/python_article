@@ -303,9 +303,21 @@ We can break the complexity of the engine into five key points.
 
 ### One character at a time
 
-Pattern and Text are evaluated one character at a time. Path taken depends on results of the match.
+Pattern and Text are evaluated one character at a time. Path taken depends on results of the match. The engine does a backtrack if the next character is not a match until he finds successive matches for each character.
 
-![One at a time](./img/re_engine_one_at_a_time.PNG)
+### Left to right
+
+Pattern and text are evaluated left to right. Left most pattern is attempted first and gradually moves right to attempt other patterns. When left most pattern is not viable, other patterns are evaluated. Regex engine uses backtracking to evaluate other paths. The efficient way to do it is to write mor eprecise patterns first then followed by more generic ones.
+
+### Greedy or Lazy behaviour
+
+###### Greedy
+
+Quantifiers such as `*`, `+` are greedy. They will try to match as much of the input text as possible. Wildcard with greedy quantifiers can consume entire text and can starve rest of the pattern. To match rest of the pattern, regex engine backtracks on the captured text.
+
+###### Lazy
+
+Quantifiers can be turned to Lazy by adding a `?` after the quantifier. When there is no match for a pattern, lazy mode backtracks on the pattern and expands to match more characters in input. Lazy matches as few times as possible and attempts to match rest of the pattern.
 
 # H1
 ## H2
