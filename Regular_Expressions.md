@@ -101,6 +101,9 @@ Now that we know the most common and useful methods of the `re` module, we can d
 ## Python Regex Language
 
 Learning regular expressions involves getting familiar with the rules of the regular expression language, which are not that much but combined can be a powerful tool for text manipulation.
+
+### Specials characters of RE
+
 Take a look at the following table which summarizes the metacharacters used in RE patterns
 
 | Syntax | Description |
@@ -125,10 +128,10 @@ pattern = "^[T|B]"
 text1 = "This a good day!"
 test2 = "Yesterday was Tuesday"
 
-if re.findall(pattern, text1): print(match) else print("no match!")
+print("match") if re.findall(pattern, text1) else print("no match!")
 > match!
 
-if re.findall(pattern, text2): print(match) else print("no match!")
+print("match") if re.findall(pattern, text2) else print("no match!")
 > no match!
 ```
 
@@ -140,10 +143,10 @@ pattern = "^[T|B]y$"
 text1 = "This a good day!"
 test2 = "Yesterday was Tuesday"
 
-if re.findall(pattern, text1): print(match) else print("no match!")
+print("match") if re.findall(pattern, text1) else print("no match!")
 > no match!
 
-if re.findall(pattern, text2): print(match) else print("no match!")
+print("match") if re.findall(pattern, text2) else print("no match!")
 > no match!
 
 # Prints 'no match!' for both because none of them starts with T or B AND ends with y
@@ -158,15 +161,51 @@ text1 = "Hello"
 text2 = "HHelo!"
 text3 = "Hallo"
 
-if re.findall(pattern, text1): print(match) else print("no match!")
+print("match") if re.findall(pattern, text1) else print("no match!")
 > match!
 
-if re.findall(pattern, text2): print(match) else print("no match!")
+print("match") if re.findall(pattern, text2) else print("no match!")
 > no match!
 
-if re.findall(pattern, text3): print(match) else print("no match!")
+print("match") if re.findall(pattern, text3) else print("no match!")
 > match!
 ```
+
+Those metacharacters can be used single like the use cases above but they can also be part of other special notation of the regex language.
+
+### Text Exploitation
+
+#### Matching a single character
+
+To match a single character, we can write it as is or we can add specific checks or ranges for a better usage:
+
+| Use | To match any character | Example|
+| ----------- | ----------- | ----------- |
+| `[set]` | A set of characters | [abc] returns a match if it is letter a or b or c |
+| `[^set]` | Not in that set | [^abc] returns a match if it is not the letter a or b or c |
+| `[a–z]` | In the a-z range | [a-d] returns a match if it is letter a or b or c or d |
+
+```
+# Matches only if the first character of the text is an uppercase letter, the second character is not r or e and the last character is a digit
+pattern = "[A-Z][^re].*[0-9]$"
+text = "On my diet, today is the day 5"
+
+print(match) if re.findall(pattern, text) else print("no match!")
+> match!
+```
+
+#### Flags
+
+Flags are inline option we use to specifiy interpretation of the pattern and the range of searching. We use them by adding `(?flag)` in the beginning of the pattern.
+
+| Syntax | Description |
+| ----------- | ----------- |
+| `i` | Case-insensitive |
+| `m` | Multiline mode |
+| `L` | Locale specific |
+| `u` | Unicode dependent |
+| `s` | Single-line mode |
+| `x` | Ignore white space |
 
 # H1
 ## H2
