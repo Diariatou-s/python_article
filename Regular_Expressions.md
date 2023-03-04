@@ -301,7 +301,11 @@ The python regex engine is the way the behave and the steps that it follows to e
 The regular expression engine is generic and follows the instructions that have been given in the pattern. If a particular path becomes unviable, the engine can backtrack and try alternate paths. It is then our responsability as developers to find the most efficient pattern for what we want to achieve.
 We can break the complexity of the engine into five key points.
 
-### 
+### One character at a time
+
+Pattern and Text are evaluated one character at a time. Path taken depends on results of the match.
+
+![One at a time](./img/re_engine_one_at_a_time.PNG)
 
 # H1
 ## H2
