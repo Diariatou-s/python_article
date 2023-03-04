@@ -251,30 +251,57 @@ As introduced above, the group can have many uses such as defining matching patt
 | `(?<!exp)` | Zero-width negative lookbehind. exp is fixed width |
 
 ```
-pattern = r"(\d{4})(\d{2})(\d{2})"
+pattern = r"(?P<year>\d{4})(?P<month>\d{2})(?P<day>\d{2})"
 text = "Start Date: 20200920"
 match = re.search(pattern, text)
 
 if match:
     print('Found a match', match.group(0), 'at index:', match.start())
     
-    print('Groups', match.groups())
-        
-    for idx, value in enumerate(match.groups()):
-        print ('\tGroup', idx+1, value, '\tat index', match.start(idx+1))
-        
+    print(match.groupdict())
 else:
     print("No Match!")
 
 # Output
 
 Found a match 20200920 at index: 12
-Groups ('2020', '09', '20')
-	Group 1 2020 	at index 12
-	Group 2 09 	at index 16
-	Group 3 20 	at index 18
-  
+{'year': '2020', 'month': '09', 'day': '20'}
+
 ```
+
+> As method of the match instance, we also have the `groupdict` method that retrieves dictionary of named groups and values
+
+### Other
+
+###### Non-ASCII Codes
+
+| Use | To define |
+| ----------- | ----------- |
+| `\octal` | First digit 0 followed by 2 octal digits or 3 octal digits |
+| `\x hex` | 2-digit hex character code |
+| `\u hex` | 4-digit hex character code |
+
+###### Substitution
+
+| Use | To define |
+| ----------- | ----------- |
+| `\g<n>` | Substring matched by group number n |
+| `\g<name>` | Substring matched by group name |
+
+###### Comments
+
+| Use | To define |
+| ----------- | ----------- |
+| `(?# comment)` | Add inline comment |
+| `#` | Add x-mode comment to end |
+
+## Python Regex Engine - Behind the scenes
+
+The python regex engine is the way the behave and the steps that it follows to evaluate the patterns and find a match.
+The regular expression engine is generic and follows the instructions that have been given in the pattern. If a particular path becomes unviable, the engine can backtrack and try alternate paths. It is then our responsability as developers to find the most efficient pattern for what we want to achieve.
+We can break the complexity of the engine into five key points.
+
+### 
 
 # H1
 ## H2
