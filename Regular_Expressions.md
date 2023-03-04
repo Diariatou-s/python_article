@@ -32,6 +32,18 @@ To perform that, there are several methods available via the `re` module which p
 
 ***Good to know**: It is better to use raw strings to write RE patterns by adding a `r` in the beginning of the string like this: `r"This is a string"`*
 
+### Compiling Regular Expressions
+
+Regular expressions are compiled into pattern objects, which have methods for various operations such as searching for pattern matches or performing string substitutions.
+
+```
+> import re
+> p = re.compile('ab*')
+> p
+re.compile(r'ab*', re.UNICODE)
+```
+
+The RE is passed to `re.compile()` as a string. REs are handled as strings because regular expressions aren’t part of the core Python language, and no special syntax was created for expressing them. (There are applications that don’t need REs at all, so there’s no need to bloat the language specification by including them.) Instead, the re module is simply a C extension module included with Python, just like the socket or zlib modules.
 
 ### Find first match
 
@@ -216,7 +228,7 @@ Flags are inline option we use to specifiy interpretation of the pattern and the
 Control characters are special characters used to represent characters not distinguishable in ASCII like the tabulation, the backspace, the new line, etc.
 
 | Syntax | Description | Unicode |
-| ----------- | ----------- |
+| ----------- | ----------- | ----------- |
 | `\t` | Horizontal tab | \u0009 |
 | `\v` | Vertical tab | \u000B |
 | `\b` | Backspace | \u0008 |
@@ -389,7 +401,10 @@ In summary, while regular expressions can be challenging to master, they are a p
 ### Resources
 
 [Regular Expression HOWTO](https://docs.python.org/3/howto/regex.html)
+
 [Python RegEx](https://www.w3schools.com/python/python_regex.asp)
+
 [Applications of Regex in Data Science](https://www.enjoyalgorithms.com/blog/regex-applications-in-data-science)
+
 [Regular Expressions (Regex) with Python - Easy and Fast!](https://www.udemy.com/course/python-regular-expressions/)
 
