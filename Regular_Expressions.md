@@ -407,3 +407,19 @@ In summary, while regular expressions can be challenging to master, they are a p
 
 [Regular Expressions (Regex) with Python - Easy and Fast!](https://www.udemy.com/course/python-regular-expressions/)
 
+---
+
+### Further Reading
+
+[Regex Engine](https://devopedia.org/regex-engines)
+
+[Regular Expression Matching in the Wild](https://swtch.com/~rsc/regexp/regexp3.html)
+
+[How Regex Engine Works Internally](https://www.regular-expressions.info/engine.html)
+
+[Why Using the Greedy .* is Almost Never What You Actually Want](https://mariusschulz.com/blog/why-using-in-regular-expressions-is-almost-never-what-you-actually-want)
+
+[Thompson's Construction](https://en.wikipedia.org/wiki/Thompson%27s_construction)
+
+
+
