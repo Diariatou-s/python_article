@@ -20,7 +20,7 @@
     * 2.5. [Split](#split)
 * 3. [Python Regex Language](#python-regex-language)
     * 3.1. [Specials characters of RE](#specials-characters-of-re)
-    * 3.2. [Text Exploitation](#text-exploitation)
+    * 3.2. [Text Manipulation](#text-manipulation)
         * 3.2.1. [Matching a single character](#matching-a-single-character)
         * 3.2.2. [Flags](#flags)
         * 3.2.3. [Control Characters](#control-characters)
@@ -69,7 +69,7 @@ We call the method of that module by typing `re.name_of_the_method`.
 ##  2. <a name='python-regex-features'></a>Python Regex Features
 
 As introduced, Regex are used mostly for searching a match of a specific pattern on a string.
-To perform that, there are several methods available via the `re` module which performances and behaviours and utilities can differ.
+To perform that, there are several methods available via the `re` module which performances, behaviours and utilities can differ.
 
 ***Good to know**: It is better to use raw strings to write RE patterns by adding a `r` in the beginning of the string like this: `r"This is a string"`*
 
@@ -95,7 +95,7 @@ If we want to find a match of "John" in the string "John is eating bread" for ex
 
 *Note that the `match` method finds the first match at the start of the text. So, running the same code trying to match "bread" for example will not work.*
 
-When it finds the match at the beginning of the text, it will return something like this `<re.Match object; span=(0, 2), match='Je'>` of type `re.match`, otherwise it will return `None`.
+When it finds the match at the beginning of the text, it will return something like this `<re.Match object; span=(0, 2), match='John'>` of type `re.match`, otherwise it will return `None`.
 
 If you want to find a match anywhere in the string, we have to use the `search` method, like following:
 
@@ -136,7 +136,7 @@ The object returned after a match by the RE methods is a match instance that hav
 
 ###  2.4. <a name='find-and-replace'></a>Find and Replace
 
-if we want not only to find a match but also to replace it we use the `sub` method. The parameters we have to provide are the RE pattern, the replacement pattern and the concerned text.
+if we want not only to find a match but also to replace it we use the `sub` method. The parameters we have to provide are the RE pattern, the replacement pattern and the relevant text.
 
 ```
 > re.sub(r"s", ",", "This is a string")
@@ -145,7 +145,7 @@ if we want not only to find a match but also to replace it we use the `sub` meth
 
 ###  2.5. <a name='split'></a>Split
 
-The `split()` method allows use to split the text or the string by the provided pattern. The return is a list of the elements.
+The `split()` method allows us to split the text or the string by the provided pattern. The return is a list of the elements.
 
 ```
 > re.split(r",", "John, Sara, Mary, Abel, Thomas")
@@ -176,7 +176,7 @@ Take a look at the following table which summarizes the metacharacters used in R
 | `|` | Either or |
 | `()` | Capture and group |
 
-**Use case 1:**
+**Example 1:**
 
 ```
 # Matches only if the first letter of the text is T or B
@@ -191,7 +191,7 @@ print("match") if re.findall(pattern, text2) else print("no match!")
 > no match!
 ```
 
-**Use case 2**
+**Example 2**
 
 ```
 # Matches only if the first letter of the text is T or B and ends with the letter y
@@ -208,7 +208,7 @@ print("match") if re.findall(pattern, text2) else print("no match!")
 # Prints 'no match!' for both because none of them starts with T or B AND ends with y
 ```
 
-**Use case 3**
+**Example 3**
 
 ```
 # Matches only if the first letter of the text is H and is present one or more times, is followed by whatever characters except for the new line, the letter l exactly two times, the letter o and then the ! optionally
@@ -227,9 +227,9 @@ print("match") if re.findall(pattern, text3) else print("no match!")
 > match!
 ```
 
-Those metacharacters can be used single like the use cases above but they can also be part of other special notation of the regex language.
+Those metacharacters can be used single like the examples above but they can also be part of other special notation of the regex language.
 
-###  3.2. <a name='text-exploitation'></a>Text Exploitation
+###  3.2. <a name='text-manipulation'></a>Text Manipulation
 
 ####  3.2.1. <a name='matching-a-single-character'></a>Matching a single character
 
@@ -294,17 +294,17 @@ Some special charcters of the regex language can specify a set of value in order
 
 ####  3.2.5. <a name='groups'></a>Groups
 
-As introduced above, the group can have many uses such as defining matching patterns into groups and naming those group for a simpler access and manipulation.
+As introduced above, the `group()` method can have many uses such as defining matching patterns into groups and naming those groups for a simpler access and manipulation.
 
 | Use | To define |
 | ----------- | ----------- |
 | `(exp)` | Indexed group |
 | `(?P<name>exp)` | Named group |
 | `(?:exp)` | Noncapturing group |
-| `(?=exp)` | Zero-width positive lookahead |
-| `(?!exp)` | Zero-width negative lookahead |
-| `(?<=exp)` | Zero-width positive lookbehind. exp is fixed width |
-| `(?<!exp)` | Zero-width negative lookbehind. exp is fixed width |
+| `(?=exp)` | Zero-width [positive lookahead](#positive-look-ahead) |
+| `(?!exp)` | Zero-width [negative lookahead](#negative-look-ahead) |
+| `(?<=exp)` | Zero-width [positive lookbehind](#positive-look-behind). exp is fixed width |
+| `(?<!exp)` | Zero-width [negative lookbehind](#negative-look-behind). exp is fixed width |
 
 ```
 pattern = r"(?P<year>\d{4})(?P<month>\d{2})(?P<day>\d{2})"
@@ -325,7 +325,7 @@ Found a match 20200920 at index: 12
 
 ```
 
-> As method of the match instance, we also have the `groupdict` method that retrieves dictionary of named groups and values
+> As method of the match instance, we also have the `groupdict()` method that retrieves dictionary of named groups and values
 
 ###  3.3. <a name='other'></a>Other
 
@@ -357,8 +357,9 @@ Replacement pattern can use groups captured in find pattern.
 
 ##  4. <a name='python-regex-engine---behind-the-scenes'></a>Python Regex Engine - Behind the scenes
 
-The python regex engine is the way the behave and the steps that it follows to evaluate the patterns and find a match.
+The python regex engine is the way the engine behaves and the steps that it follows to evaluate the patterns and find a match.
 The regular expression engine is generic and follows the instructions that have been given in the pattern. If a particular path becomes unviable, the engine can backtrack and try alternate paths. It is then our responsability as developers to find the most efficient pattern for what we want to achieve.
+
 We can break the complexity of the engine into five key points.
 
 ###  4.1. <a name='one-character-at-a-time'></a>One character at a time
@@ -367,7 +368,7 @@ Pattern and Text are evaluated one character at a time. Path taken depends on re
 
 ###  4.2. <a name='left-to-right'></a>Left to right
 
-Pattern and text are evaluated left to right. Left most pattern is attempted first and gradually moves right to attempt other patterns. When left most pattern is not viable, other patterns are evaluated. Regex engine uses backtracking to evaluate other paths. The efficient way to do it is to write mor eprecise patterns first then followed by more generic ones.
+Pattern and text are evaluated left to right. Left most pattern is attempted first and gradually moves right to attempt other patterns. When left most pattern is not viable, other patterns are evaluated. Regex engine uses backtracking to evaluate other paths. The efficient way to do it is to write more precise patterns first then followed by more generic ones.
 
 ###  4.3. <a name='greedy-and-lazy'></a>Greedy and Lazy
 
@@ -384,25 +385,25 @@ Quantifiers can be turned to Lazy by adding a `?` after the quantifier. When the
 Look ahead peeks at what is coming up next without consuming the characters while Look behind looks at what came before current character. They allows us to implement more complex conditional logic.
 Both are called zero width assertions; they do not consume any characters and return either `True` or `False`. 
 
-###### Positive Look ahead
+###### <a name='positive-look-ahead'></a>Positive Look ahead
 
 `IF (pre-condition) THEN (expression)`
 
 With the positive Look-ahead, pre-condition looks at the characters coming up next (without consuming them) and the expression is evaluated only when the pre-condition is met.
 
-###### Negative Look-ahead
+###### <a name='negative-look-ahead'></a>Negative Look-ahead
 
 `IF NOT (pre-condition) THEN (expression)`
 
 With negative Look ahead, pre-condition looks at the characters coming up next (without consuming them) and the expression is evaluated only when the pre-condition is NOT met.
 
-###### Positive Look-behind
+###### <a name='positive-look-behind'></a>Positive Look-behind
 
 `IF (pre-condition) THEN (expression)`
 
 With the positive Look-ahead, pre-condition condition goes back and checks characters before the current one (without consuming them) and the expression is evaluated only when the pre-condition is met.
 
-###### Negative Look-behind
+###### <a name='negative-look-behind'></a>Negative Look-behind
 
 `IF NOT (pre-condition) THEN (expression)`
 
@@ -412,16 +413,17 @@ With negative Look ahead, pre-condition goes back and checks characters before t
 
 ##  5. <a name='regular-expressions-applications-in-data-science'></a>Regular Expressions Applications in Data Science
 
-After looking at the detailed structure of REs, let's now explore some insductrial applications of regex by applying it to some standard applications in data science.
+After looking at the detailed structure of REs, let's now explore some industrial applications of regex by applying it to some standard applications in data science.
 
 ###  5.1. <a name='web-scraping-and-data-collection'></a>Web-Scraping and Data Collection
 
-Data Collection is a significant part of any project since it consumes a lot of time and effort. Nevertheless, collecting textual data over the web is far more accessible thanks to libraries like beautiful soup, Scrapy, and Selenium. The collected data often requires cleaning, and cleaning tasks are tedious. With the help of regular expressions, we can clean web data efficiently and promptly.
-The real-world unstructured data can be hard to read and analyse. Our job is to extract the data carefully without losing any crucial information. Tackling this task manually might not seem challenging since there are only a few lines but imagine if we have millions of rows with the same kind of complex text. Thanks to regex, we can extract the desired links with a few lines of code even if we have millions of rows present in the data. Let’s see how we can extract links abtained after a web scraping extraction. 
+Data Collection is a significant part of any project since it consumes a lot of time and effort. Nevertheless, collecting textual data over the web is far more accessible thanks to libraries like Beautiful Soup, Scrapy, and Selenium. The collected data often requires cleaning, and cleaning tasks are tedious. With the help of regular expressions, we can clean web data efficiently and promptly.
+
+The real-world unstructured data can be hard to read and analyse. Our job is to extract the data carefully without losing any crucial information. Tackling this task manually might not seem challenging since there are only a few lines but imagine if we have millions of rows with the same kind of complex text. Thanks to regex, we can extract the desired links with a few lines of code even if we have millions of rows present in the data. Let’s see how we can extract links obtained after a web scraping extraction. 
 
 ```
 import re
-clean_urls = re.findll(r'href=[\'"]?([^\'" >]+)', raw_url_data)
+clean_urls = re.findall(r'href=[\'"]?([^\'" >]+)', raw_url_data)
 ```
 
 ###  5.2. <a name='text-preprocessing'></a>Text Preprocessing
@@ -433,7 +435,7 @@ We can create a pipeline of regex patterns for the data to go through and perfor
 
 # <a name='conclusion'></a>Conclusion
 
-The difficulty of using REs can vary depending on the complexity of the expressions you need to create and your familiarity with the syntax. At its simplest level, regex can be easy to understand and use for basic pattern matching tasks, such as finding all occurrences of a particular string or character in a text file. They indeed have minimized the data cleansing efforts by a far portion.
+The difficulty of using REs can vary depending on the complexity of the expressions you need to create and your familiarity with the syntax. At its simplest level, regex can be easy to understand and used for basic pattern matching tasks, such as finding all occurrences of a particular string or character in a text file. They indeed have minimized the data cleansing efforts by a far portion.
 Regular expressions have been extended to human-computer interactions, and we might see some more significant applications in the near future like we presented above some excellent applications of regular expressions in the data science domain.
 In summary, while regular expressions can be challenging to master, they are a powerful tool for pattern matching and text manipulation tasks. With practice and patience, you can learn to use regex effectively.
 
