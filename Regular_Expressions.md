@@ -6,6 +6,9 @@
 # Regular Expressions
 
 ---
+
+##### Table of Contents
+
 <!-- vscode-markdown-toc -->
 * [Introduction](#introdution)
 * 1. [Importation of the module](#importation-of-the-module)
@@ -36,9 +39,15 @@
 * [Resources](#resources)
 * [Further Reading](#further-reading)
 
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+
 ---
 
-##  <a name='introduction'></a>Introduction
+##  1. <a name='introduction'></a>Introduction
 
 Being in the data exploitation industry, data cleaning is one of the biggest parts of the job. However it's not always an easy task to do, especially in cases where user input is expected. This one can put everything he wants which can impact the quality of our model and our algorithm. Regular expressions are there to help alleviate this concern and save considerable time for the developer in terms of data validation and data cleaning as well as preventing injection attacks.
 Regular expressions (called REs, or regexes, or regex patterns) are a powerful way to find and isolate expressions from a string, basically text manipulation in python. It is a mini programming language, highly specialized, embedded inside python.
@@ -49,7 +58,7 @@ So let's begin!
 
 ---
 
-##  1. <a name='importation-of-the-module'></a>Importation of the module
+##  2. <a name='importation-of-the-module'></a>Importation of the module
 
 Python has an easy to use module for regex named `re`, which allowing you to compile REs into objects and then perform matches with them. To import that module, nothing easier, just type:
 
@@ -57,14 +66,14 @@ Python has an easy to use module for regex named `re`, which allowing you to com
 
 We call the method of that module by typing `re.name_of_the_method`.
 
-##  2. <a name='python-regex-features'></a>Python Regex Features
+##  3. <a name='python-regex-features'></a>Python Regex Features
 
 As introduced, Regex are used mostly for searching a match of a specific pattern on a string.
 To perform that, there are several methods available via the `re` module which performances and behaviours and utilities can differ.
 
 ***Good to know**: It is better to use raw strings to write RE patterns by adding a `r` in the beginning of the string like this: `r"This is a string"`*
 
-###  2.1. <a name='compiling-regular-expressions'></a>Compiling Regular Expressions
+###  3.1. <a name='compiling-regular-expressions'></a>Compiling Regular Expressions
 
 Regular expressions are compiled into pattern objects, which have methods for various operations such as searching for pattern matches or performing string substitutions.
 
@@ -77,7 +86,7 @@ re.compile(r'ab*', re.UNICODE)
 
 The RE is passed to `re.compile()` as a string. REs are handled as strings because regular expressions aren’t part of the core Python language, and no special syntax was created for expressing them. (There are applications that don’t need REs at all, so there’s no need to bloat the language specification by including them.) Instead, the re module is simply a C extension module included with Python, just like the socket or zlib modules.
 
-###  2.2. <a name='find-first-match'></a>Find first match
+###  3.2. <a name='find-first-match'></a>Find first match
 
 Fist of all , let's look at the `match` method, which is the most basic one.
 If we want to find a match of "John" in the string "John is eating bread" for example, we can do:
@@ -95,7 +104,7 @@ If you want to find a match anywhere in the string, we have to use the `search` 
 <re.Match object; span=(5, 7), match='is'>
 ```
 
-###  2.3. <a name='find-all-matches'></a>Find All Matches
+###  3.3. <a name='find-all-matches'></a>Find All Matches
 
 The most used methods for pattern searching in a string have to be the ones that allow us to find *all* of the occurences of that specific pattern in the string.
 We have the `findall` method which finds all the matches wrapped in a list in a single call, otherwise, it will return an empty list:
@@ -125,7 +134,7 @@ The object returned after a match by the RE methods is a match instance that hav
 
 > The group() method can be very useful, which we will see later on
 
-###  2.4. <a name='find-and-replace'></a>Find and Replace
+###  3.4. <a name='find-and-replace'></a>Find and Replace
 
 if we want not only to find a match but also to replace it we use the `sub` method. The parameters we have to provide are the RE pattern, the replacement pattern and the concerned text.
 
@@ -134,7 +143,7 @@ if we want not only to find a match but also to replace it we use the `sub` meth
 'Thi, i, a ,tring'
 ```
 
-###  2.5. <a name='split'></a>Split
+###  3.5. <a name='split'></a>Split
 
 The `split()` method allows use to split the text or the string by the provided pattern. The return is a list of the elements.
 
@@ -145,11 +154,11 @@ The `split()` method allows use to split the text or the string by the provided 
 
 Now that we know the most common and useful methods of the `re` module, we can deep dive into the Python Regex Languages in order for us to write more specific and complex patterns for a better use of those methods.
 
-##  3. <a name='python-regex-language'></a>Python Regex Language
+##  4. <a name='python-regex-language'></a>Python Regex Language
 
 Learning regular expressions involves getting familiar with the rules of the regular expression language, which are not that much but combined can be a powerful tool for text manipulation.
 
-###  3.1. <a name='specials-characters-of-re'></a>Specials characters of RE
+###  4.1. <a name='specials-characters-of-re'></a>Specials characters of RE
 
 Take a look at the following table which summarizes the metacharacters used in RE patterns
 
@@ -220,9 +229,9 @@ print("match") if re.findall(pattern, text3) else print("no match!")
 
 Those metacharacters can be used single like the use cases above but they can also be part of other special notation of the regex language.
 
-###  3.2. <a name='text-exploitation'></a>Text Exploitation
+###  4.2. <a name='text-exploitation'></a>Text Exploitation
 
-####  3.2.1. <a name='matching-a-single-character'></a>Matching a single character
+####  4.2.1. <a name='matching-a-single-character'></a>Matching a single character
 
 To match a single character, we can write it as is or we can add specific checks or ranges for a better usage:
 
@@ -241,7 +250,7 @@ print("match") if re.findall(pattern, text) else print("no match!")
 > match!
 ```
 
-####  3.2.2. <a name='flags'></a>Flags
+####  4.2.2. <a name='flags'></a>Flags
 
 Flags are inline option we use to specifiy interpretation of the pattern and the range of searching. We use them by adding `(?flag)` in the beginning of the pattern.
 
@@ -255,7 +264,7 @@ Flags are inline option we use to specifiy interpretation of the pattern and the
 | `x` | Ignore white space |
 
 
-####  3.2.3. <a name='control-characters'></a>Control Characters
+####  4.2.3. <a name='control-characters'></a>Control Characters
 
 Control characters are special characters used to represent characters not distinguishable in ASCII like the tabulation, the backspace, the new line, etc.
 
@@ -270,7 +279,7 @@ Control characters are special characters used to represent characters not disti
 | `\n` | New line | \u000A |
 | `\a` | Bell (alarm) | \u0007 |
 
-####  3.2.4. <a name='character-classes'></a>Character Classes
+####  4.2.4. <a name='character-classes'></a>Character Classes
 
 Some special charcters of the regex language can specify a set of value in order to simplify our pattern or facilitate understanding
 
@@ -283,7 +292,7 @@ Some special charcters of the regex language can specify a set of value in order
 | `\s` | White-space character [ \t\n\r\f\v] and Unicode spaces |
 | `\S` | Non-white-space char |
 
-####  3.2.5. <a name='groups'></a>Groups
+####  4.2.5. <a name='groups'></a>Groups
 
 As introduced above, the group can have many uses such as defining matching patterns into groups and naming those group for a simpler access and manipulation.
 
@@ -318,7 +327,7 @@ Found a match 20200920 at index: 12
 
 > As method of the match instance, we also have the `groupdict` method that retrieves dictionary of named groups and values
 
-###  3.3. <a name='other'></a>Other
+###  4.3. <a name='other'></a>Other
 
 ###### Non-ASCII Codes
 
@@ -346,21 +355,21 @@ Replacement pattern can use groups captured in find pattern.
 
 ---
 
-##  4. <a name='python-regex-engine---behind-the-scenes'></a>Python Regex Engine - Behind the scenes
+##  5. <a name='python-regex-engine---behind-the-scenes'></a>Python Regex Engine - Behind the scenes
 
 The python regex engine is the way the behave and the steps that it follows to evaluate the patterns and find a match.
 The regular expression engine is generic and follows the instructions that have been given in the pattern. If a particular path becomes unviable, the engine can backtrack and try alternate paths. It is then our responsability as developers to find the most efficient pattern for what we want to achieve.
 We can break the complexity of the engine into five key points.
 
-###  4.1. <a name='one-character-at-a-time'></a>One character at a time
+###  5.1. <a name='one-character-at-a-time'></a>One character at a time
 
 Pattern and Text are evaluated one character at a time. Path taken depends on results of the match. The engine does a backtrack if the next character is not a match until he finds successive matches for each character.
 
-###  4.2. <a name='left-to-right'></a>Left to right
+###  5.2. <a name='left-to-right'></a>Left to right
 
 Pattern and text are evaluated left to right. Left most pattern is attempted first and gradually moves right to attempt other patterns. When left most pattern is not viable, other patterns are evaluated. Regex engine uses backtracking to evaluate other paths. The efficient way to do it is to write mor eprecise patterns first then followed by more generic ones.
 
-###  4.3. <a name='greedy-and-lazy'></a>Greedy and Lazy
+###  5.3. <a name='greedy-and-lazy'></a>Greedy and Lazy
 
 ###### Greedy
 
@@ -370,7 +379,7 @@ Quantifiers such as `*`, `+` are greedy. They will try to match as much of the i
 
 Quantifiers can be turned to Lazy by adding a `?` after the quantifier. When there is no match for a pattern, lazy mode backtracks on the pattern and expands to match more characters in input. Lazy matches as few times as possible and attempts to match rest of the pattern.
 
-###  4.4. <a name='look-ahead-and-look-behing'></a>Look ahead and Look behing
+###  5.4. <a name='look-ahead-and-look-behing'></a>Look ahead and Look behing
 
 Look ahead peeks at what is coming up next without consuming the characters while Look behind looks at what came before current character. They allows us to implement more complex conditional logic.
 Both are called zero width assertions; they do not consume any characters and return either `True` or `False`. 
@@ -401,11 +410,11 @@ With negative Look ahead, pre-condition goes back and checks characters before t
 
 ---
 
-##  5. <a name='regular-expressions-applications-in-data-science'></a>Regular Expressions Applications in Data Science
+##  6. <a name='regular-expressions-applications-in-data-science'></a>Regular Expressions Applications in Data Science
 
 After looking at the detailed structure of REs, let's now explore some insductrial applications of regex by applying it to some standard applications in data science.
 
-###  5.1. <a name='web-scraping-and-data-collection'></a>Web-Scraping and Data Collection
+###  6.1. <a name='web-scraping-and-data-collection'></a>Web-Scraping and Data Collection
 
 Data Collection is a significant part of any project since it consumes a lot of time and effort. Nevertheless, collecting textual data over the web is far more accessible thanks to libraries like beautiful soup, Scrapy, and Selenium. The collected data often requires cleaning, and cleaning tasks are tedious. With the help of regular expressions, we can clean web data efficiently and promptly.
 The real-world unstructured data can be hard to read and analyse. Our job is to extract the data carefully without losing any crucial information. Tackling this task manually might not seem challenging since there are only a few lines but imagine if we have millions of rows with the same kind of complex text. Thanks to regex, we can extract the desired links with a few lines of code even if we have millions of rows present in the data. Let’s see how we can extract links abtained after a web scraping extraction. 
@@ -415,7 +424,7 @@ import re
 clean_urls = re.findll(r'href=[\'"]?([^\'" >]+)', raw_url_data)
 ```
 
-###  5.2. <a name='text-preprocessing'></a>Text Preprocessing
+###  6.2. <a name='text-preprocessing'></a>Text Preprocessing
 
 Text data is collected from a variety of sources, namely the feedback forms, web-scrapped text, text extracted from images using OCRs, etc. Such diverse data comes with high inconsistencies that should be removed before diving into any language modeling task. Language modeling tasks include sentiment analysis, language translation, text generation, name entity recognition, etc. Each of the mentioned tasks requires clean text data for modeling. 
 We can create a pipeline of regex patterns for the data to go through and perform the preprocessing in no time.
@@ -430,7 +439,7 @@ In summary, while regular expressions can be challenging to master, they are a p
 
 ---
 
-###  <a name='resources'></a>Resources
+###  6.3. <a name='resources'></a>Resources
 
 [Regular Expression HOWTO](https://docs.python.org/3/howto/regex.html)
 
@@ -442,7 +451,7 @@ In summary, while regular expressions can be challenging to master, they are a p
 
 ---
 
-###  <a name='further-reading'></a>Further Reading
+###  6.4. <a name='further-reading'></a>Further Reading
 
 [Regex Engine](https://devopedia.org/regex-engines)
 
