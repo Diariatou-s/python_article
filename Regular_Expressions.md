@@ -52,7 +52,7 @@
 Being in the data exploitation industry, data cleaning is one of the biggest parts of the job. However it's not always an easy task to do, especially in cases where user input is expected. This one can put everything he wants which can impact the quality of our model and our algorithm. Regular expressions are there to help alleviate this concern and save considerable time for the developer in terms of data validation and data cleaning as well as preventing injection attacks.
 Regular expressions (called REs, or regexes, or regex patterns) are a powerful way to find and isolate expressions from a string, basically text manipulation in python. It is a mini programming language, highly specialized, embedded inside python.
 Those patterns are compiled into a series of bytecodes which are then executed by a matching engine written in C.
-Regular expressions can be quite powerful, but the syntax can be cryptic, and there are many advanced features that take time and practice to master. But, **don't worry!**, we will cover everything you will need to know in that article.
+Regular expressions can be quite powerful, but the syntax can be cryptic, and there are many advanced features that take time and practice to master. But, **don't worry!**, we will cover everything you will need to know in this article.
 
 So let's begin!
 
@@ -84,7 +84,7 @@ Regular expressions are compiled into pattern objects, which have methods for va
 re.compile(r'ab*', re.UNICODE)
 ```
 
-The RE is passed to `re.compile()` as a string. REs are handled as strings because regular expressions aren’t part of the core Python language, and no special syntax was created for expressing them. (There are applications that don’t need REs at all, so there’s no need to bloat the language specification by including them.) Instead, the re module is simply a C extension module included with Python, just like the socket or zlib modules.
+The RE is passed to `re.compile()` as a string. REs are handled as strings because regular expressions aren’t part of the core Python language, and no special syntax was created for expressing them. (There are applications that don’t need REs at all, so there’s no need to bloat the language specification by including them.) Instead, the `re` module is simply a C extension module included with Python, just like the socket or zlib modules.
 
 ###  2.2. <a name='find-first-match'></a>Find first match
 
